@@ -83,7 +83,7 @@ export function Capture() {
       </h1>
       <textarea
         className="capture-screen__input"
-        placeholder="Що в голові?"
+        placeholder="Напиши сюди..."
         value={draft}
         onChange={(e) => setDraft(e.target.value)}
         autoFocus
