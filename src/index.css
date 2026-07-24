@@ -55,12 +55,21 @@ body {
   position: relative;
 }
 
+.capture-screen__greeting {
+  margin: 0;
+  padding: 28px 84px 12px 20px;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--color-text);
+}
+
 .capture-screen__input {
   flex: 1;
   width: 100%;
   border: none;
   resize: none;
-  padding: 24px 20px 140px;
+  padding: 0 20px 140px;
   font-size: 19px;
   line-height: 1.5;
   background: transparent;
@@ -70,10 +79,10 @@ body {
 
 .capture-screen__football {
   position: absolute;
-  top: 28px;
-  right: 24px;
-  font-size: 36px;
-  opacity: 0.25;
+  top: 24px;
+  right: 20px;
+  font-size: 32px;
+  opacity: 0.3;
   animation: football-bounce 2.6s ease-in-out infinite;
   pointer-events: none;
 }

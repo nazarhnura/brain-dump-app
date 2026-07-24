@@ -10,9 +10,12 @@ export function Capture() {
       <span className="capture-screen__football" aria-hidden="true">
         ⚽
       </span>
+      <h1 className="capture-screen__greeting">
+        Вітаю, я твій розумний планувальник. Давай робити світ кращим, які у тебе плани?
+      </h1>
       <textarea
         className="capture-screen__input"
-        placeholder="Вітаю, я твій розумний планувальник. Давай робити світ кращим, які у тебе плани?"
+        placeholder="Що в голові?"
         value={draft}
         onChange={(e) => setDraft(e.target.value)}
         autoFocus
