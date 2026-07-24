@@ -99,7 +99,7 @@ export function Capture({ onCapture }: CaptureProps) {
 
   return (
     <div className="screen capture-screen">
-      <BouncingBall className="capture-screen__football" size={36}>
+      <BouncingBall className="capture-screen__football" size={60}>
         ⚽
       </BouncingBall>
       <h1 className="capture-screen__greeting">
