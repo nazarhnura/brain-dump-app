@@ -9,6 +9,7 @@ const TABS: { id: Screen; label: string; icon: string }[] = [
   { id: 'capture', label: 'Capture', icon: '✎' },
   { id: 'inbox', label: 'Inbox', icon: '▤' },
   { id: 'today', label: 'Today', icon: '✓' },
+  { id: 'game', label: 'Game', icon: '⚽' },
 ]
 
 export function BottomNav({ active, onChange }: BottomNavProps) {

@@ -3,6 +3,7 @@ import { BottomNav } from './components/BottomNav'
 import { Capture } from './screens/Capture'
 import { Inbox } from './screens/Inbox'
 import { Today } from './screens/Today'
+import { Game } from './screens/Game'
 import { useLocalStorage } from './hooks/useLocalStorage'
 import type { Screen, Task } from './types'
 
@@ -47,6 +48,7 @@ export default function App() {
         {activeScreen === 'today' && (
           <Today tasks={tasks.filter((t) => t.list === 'today')} onToggle={toggleTask} />
         )}
+        {activeScreen === 'game' && <Game />}
       </main>
       <BottomNav active={activeScreen} onChange={setActiveScreen} />
     </div>

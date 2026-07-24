@@ -8,4 +8,4 @@ export interface Task {
   createdAt: number
 }
 
-export type Screen = 'capture' | 'inbox' | 'today'
+export type Screen = 'capture' | 'inbox' | 'today' | 'game'

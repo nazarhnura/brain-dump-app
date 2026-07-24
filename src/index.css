@@ -316,6 +316,83 @@ body {
   line-height: 1;
 }
 
+.game-screen {
+  position: relative;
+  overflow: hidden;
+}
+
+.game-score {
+  margin: 4px 0 0;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--color-text-muted);
+}
+
+.game-goal {
+  position: relative;
+  width: 78%;
+  max-width: 300px;
+  height: 120px;
+  margin: 20px auto 0;
+  border: 6px solid #f2f2f2;
+  border-bottom: none;
+  border-radius: 6px 6px 0 0;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+}
+
+.game-goal__net {
+  position: absolute;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.35) 0 1px, transparent 1px 14px),
+    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.35) 0 1px, transparent 1px 14px);
+}
+
+.game-ball {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40px;
+  touch-action: none;
+  user-select: none;
+  cursor: grab;
+}
+
+.game-goal-flash {
+  position: absolute;
+  top: 38%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 42px;
+  font-weight: 800;
+  color: #ffffff;
+  text-shadow: 0 0 24px rgba(10, 132, 255, 0.9);
+  animation: goal-pop 0.65s ease forwards;
+  pointer-events: none;
+}
+
+@keyframes goal-pop {
+  0% {
+    transform: translate(-50%, -50%) scale(0.4);
+    opacity: 0;
+  }
+  30% {
+    transform: translate(-50%, -50%) scale(1.15);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0;
+  }
+}
+
 .bottom-nav__tab--active {
   color: #ffffff;
   font-weight: 600;
