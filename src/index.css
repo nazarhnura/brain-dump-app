@@ -53,6 +53,7 @@ body {
 .capture-screen {
   padding: 0;
   position: relative;
+  overflow: hidden;
 }
 
 .capture-screen__greeting {
@@ -78,7 +79,6 @@ body {
 }
 
 .capture-screen__football {
-  font-size: 52px;
   opacity: 0.3;
   pointer-events: none;
 }

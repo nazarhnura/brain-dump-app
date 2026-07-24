@@ -74,7 +74,24 @@ export function BouncingBall({ children, size = 36, speed = 90, className }: Bou
   }, [size, speed])
 
   return (
-    <span ref={elRef} className={className} aria-hidden="true" style={{ position: 'absolute', top: 0, left: 0, willChange: 'transform' }}>
+    <span
+      ref={elRef}
+      className={className}
+      aria-hidden="true"
+      style={{
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        width: size,
+        height: size,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        fontSize: size * 0.85,
+        lineHeight: 1,
+        willChange: 'transform',
+      }}
+    >
       {children}
     </span>
   )
