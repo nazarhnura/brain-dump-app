@@ -1,13 +1,29 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState, type KeyboardEvent } from 'react'
 import { useLocalStorage } from '../hooks/useLocalStorage'
 import { BouncingBall } from '../components/BouncingBall'
 
-export function Capture() {
+interface CaptureProps {
+  onCapture: (text: string) => void
+}
+
+export function Capture({ onCapture }: CaptureProps) {
   const [draft, setDraft] = useLocalStorage('capture-draft', '')
   const [isRecording, setIsRecording] = useState(false)
   const [isSupported, setIsSupported] = useState(true)
   const [micError, setMicError] = useState('')
   const recognitionRef = useRef<any>(null)
+  const draftRef = useRef(draft)
+  draftRef.current = draft
+  const onCaptureRef = useRef(onCapture)
+  onCaptureRef.current = onCapture
+
+  const submitDraft = () => {
+    const text = draftRef.current.trim()
+    if (text) {
+      onCaptureRef.current(text)
+      setDraft('')
+    }
+  }
 
   useEffect(() => {
     const SpeechRecognitionCtor =
@@ -44,6 +60,7 @@ export function Capture() {
 
     recognition.onend = () => {
       setIsRecording(false)
+      submitDraft()
     }
 
     recognitionRef.current = recognition
@@ -51,6 +68,7 @@ export function Capture() {
     return () => {
       recognition.stop()
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [setDraft])
 
   const toggleRecording = () => {
@@ -61,7 +79,6 @@ export function Capture() {
 
     if (isRecording) {
       recognition.stop()
-      setIsRecording(false)
       return
     }
 
@@ -70,6 +87,13 @@ export function Capture() {
       setIsRecording(true)
     } catch {
       setIsRecording(false)
+    }
+  }
+
+  const handleKeyDown = (e: KeyboardEvent<HTMLTextAreaElement>) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault()
+      submitDraft()
     }
   }
 
@@ -86,6 +110,7 @@ export function Capture() {
         placeholder="Напиши сюди..."
         value={draft}
         onChange={(e) => setDraft(e.target.value)}
+        onKeyDown={handleKeyDown}
         autoFocus
       />
       {!isSupported && (

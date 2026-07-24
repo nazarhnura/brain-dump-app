@@ -14,10 +14,21 @@ export default function App() {
     setTasks((prev) => prev.map((t) => (t.id === id ? { ...t, done: !t.done } : t)))
   }
 
+  const addInboxTask = (text: string) => {
+    const task: Task = {
+      id: crypto.randomUUID(),
+      text,
+      done: false,
+      list: 'inbox',
+      createdAt: Date.now(),
+    }
+    setTasks((prev) => [task, ...prev])
+  }
+
   return (
     <div className="app">
       <main className="app__content">
-        {activeScreen === 'capture' && <Capture />}
+        {activeScreen === 'capture' && <Capture onCapture={addInboxTask} />}
         {activeScreen === 'inbox' && <Inbox tasks={tasks.filter((t) => t.list === 'inbox')} />}
         {activeScreen === 'today' && (
           <Today tasks={tasks.filter((t) => t.list === 'today')} onToggle={toggleTask} />
