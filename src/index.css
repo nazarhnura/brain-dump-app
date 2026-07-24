@@ -78,23 +78,9 @@ body {
 }
 
 .capture-screen__football {
-  position: absolute;
-  top: 24px;
-  right: 20px;
   font-size: 32px;
   opacity: 0.3;
-  animation: football-bounce 2.6s ease-in-out infinite;
   pointer-events: none;
-}
-
-@keyframes football-bounce {
-  0%,
-  100% {
-    transform: translateY(0) rotate(0deg);
-  }
-  50% {
-    transform: translateY(-26px) rotate(180deg);
-  }
 }
 
 .capture-screen__input:focus {

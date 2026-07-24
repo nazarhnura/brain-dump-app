@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { useLocalStorage } from '../hooks/useLocalStorage'
+import { BouncingBall } from '../components/BouncingBall'
 
 export function Capture() {
   const [draft, setDraft] = useLocalStorage('capture-draft', '')
@@ -74,9 +75,9 @@ export function Capture() {
 
   return (
     <div className="screen capture-screen">
-      <span className="capture-screen__football" aria-hidden="true">
+      <BouncingBall className="capture-screen__football" size={36}>
         ⚽
-      </span>
+      </BouncingBall>
       <h1 className="capture-screen__greeting">
         Вітаю, я твій розумний планувальник. Давай робити світ кращим, які у тебе плани?
       </h1>
