@@ -25,11 +25,17 @@ export default function App() {
     setTasks((prev) => [task, ...prev])
   }
 
+  const editTask = (id: string, text: string) => {
+    setTasks((prev) => prev.map((t) => (t.id === id ? { ...t, text } : t)))
+  }
+
   return (
     <div className="app">
       <main className="app__content">
         {activeScreen === 'capture' && <Capture onCapture={addInboxTask} />}
-        {activeScreen === 'inbox' && <Inbox tasks={tasks.filter((t) => t.list === 'inbox')} />}
+        {activeScreen === 'inbox' && (
+          <Inbox tasks={tasks.filter((t) => t.list === 'inbox')} onEdit={editTask} />
+        )}
         {activeScreen === 'today' && (
           <Today tasks={tasks.filter((t) => t.list === 'today')} onToggle={toggleTask} />
         )}

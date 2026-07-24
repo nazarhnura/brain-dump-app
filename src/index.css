@@ -197,6 +197,37 @@ body {
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
 }
 
+.task-list__edit-trigger {
+  display: block;
+  width: 100%;
+  min-height: 24px;
+  padding: 0;
+  border: none;
+  background: none;
+  color: var(--color-text);
+  font-size: 17px;
+  font-family: inherit;
+  text-align: left;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.task-list__edit-input {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: none;
+  border-bottom: 1px solid var(--color-accent);
+  background: none;
+  color: var(--color-text);
+  font-size: 17px;
+  font-family: inherit;
+}
+
+.task-list__edit-input:focus {
+  outline: none;
+}
+
 .checkbox {
   display: flex;
   align-items: center;
