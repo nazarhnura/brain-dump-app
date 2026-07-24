@@ -4,9 +4,10 @@ import type { Task } from '../types'
 interface InboxProps {
   tasks: Task[]
   onEdit: (id: string, text: string) => void
+  onDelete: (id: string) => void
 }
 
-export function Inbox({ tasks, onEdit }: InboxProps) {
+export function Inbox({ tasks, onEdit, onDelete }: InboxProps) {
   const [editingId, setEditingId] = useState<string | null>(null)
   const [editingText, setEditingText] = useState('')
 
@@ -20,6 +21,8 @@ export function Inbox({ tasks, onEdit }: InboxProps) {
     const text = editingText.trim()
     if (text) {
       onEdit(editingId, text)
+    } else {
+      onDelete(editingId)
     }
     setEditingId(null)
   }
@@ -58,13 +61,21 @@ export function Inbox({ tasks, onEdit }: InboxProps) {
                 />
               </li>
             ) : (
-              <li key={task.id} className="task-list__item">
+              <li key={task.id} className="task-list__item task-list__item--row">
                 <button
                   type="button"
                   className="task-list__edit-trigger"
                   onClick={() => startEditing(task)}
                 >
                   {task.text}
+                </button>
+                <button
+                  type="button"
+                  className="task-list__delete"
+                  onClick={() => onDelete(task.id)}
+                  aria-label="Видалити задачу"
+                >
+                  ✕
                 </button>
               </li>
             ),

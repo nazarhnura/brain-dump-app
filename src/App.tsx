@@ -29,12 +29,20 @@ export default function App() {
     setTasks((prev) => prev.map((t) => (t.id === id ? { ...t, text } : t)))
   }
 
+  const deleteTask = (id: string) => {
+    setTasks((prev) => prev.filter((t) => t.id !== id))
+  }
+
   return (
     <div className="app">
       <main className="app__content">
         {activeScreen === 'capture' && <Capture onCapture={addInboxTask} />}
         {activeScreen === 'inbox' && (
-          <Inbox tasks={tasks.filter((t) => t.list === 'inbox')} onEdit={editTask} />
+          <Inbox
+            tasks={tasks.filter((t) => t.list === 'inbox')}
+            onEdit={editTask}
+            onDelete={deleteTask}
+          />
         )}
         {activeScreen === 'today' && (
           <Today tasks={tasks.filter((t) => t.list === 'today')} onToggle={toggleTask} />
