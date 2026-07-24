@@ -1,15 +1,13 @@
 :root {
-  --color-bg: #f3f1fb;
-  --color-surface: #ffffff;
-  --color-surface-alpha: rgba(255, 255, 255, 0.72);
-  --color-text: #16151d;
-  --color-text-muted: #6f6d80;
-  --color-accent: #4c3df0;
-  --color-border: rgba(23, 21, 41, 0.08);
+  --color-bg: #000000;
+  --color-surface: #1c1c1e;
+  --color-surface-alpha: rgba(28, 28, 30, 0.78);
+  --color-text: #ffffff;
+  --color-text-muted: rgba(235, 235, 245, 0.6);
+  --color-accent: #0a84ff;
+  --color-border: rgba(255, 255, 255, 0.12);
   --safe-bottom: env(safe-area-inset-bottom, 0px);
-  --app-gradient: radial-gradient(120% 60% at 15% 0%, #eef0ff 0%, transparent 55%),
-    radial-gradient(120% 60% at 100% 100%, #ffe9f2 0%, transparent 55%),
-    linear-gradient(180deg, #f5f4fd 0%, #eceafc 100%);
+  --app-gradient: radial-gradient(120% 55% at 50% 0%, #1c1c1e 0%, #000000 60%);
 }
 
 * {
@@ -93,21 +91,21 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 12px 28px rgba(76, 61, 240, 0.35);
+  box-shadow: 0 12px 28px rgba(10, 132, 255, 0.4);
 }
 
 .mic-button--active {
-  background: #d33;
+  background: #ff3b30;
   animation: pulse 1.4s ease-in-out infinite;
 }
 
 @keyframes pulse {
   0%,
   100% {
-    box-shadow: 0 0 0 0 rgba(211, 51, 51, 0.4);
+    box-shadow: 0 0 0 0 rgba(255, 59, 48, 0.4);
   }
   50% {
-    box-shadow: 0 0 0 16px rgba(211, 51, 51, 0);
+    box-shadow: 0 0 0 16px rgba(255, 59, 48, 0);
   }
 }
 
@@ -135,13 +133,13 @@ body {
 
 .task-list__item {
   background: var(--color-surface-alpha);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border: 1px solid var(--color-border);
-  border-radius: 14px;
+  border-radius: 16px;
   padding: 16px;
   font-size: 17px;
-  box-shadow: 0 4px 16px rgba(23, 21, 41, 0.06);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
 }
 
 .checkbox {
@@ -154,6 +152,7 @@ body {
   width: 26px;
   height: 26px;
   flex-shrink: 0;
+  accent-color: var(--color-accent);
 }
 
 .task-list__text--done {
@@ -165,8 +164,8 @@ body {
   display: flex;
   border-top: 1px solid var(--color-border);
   background: var(--color-surface-alpha);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(24px) saturate(1.6);
+  -webkit-backdrop-filter: blur(24px) saturate(1.6);
   padding-bottom: var(--safe-bottom);
 }
 
