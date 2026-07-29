@@ -17,8 +17,10 @@
   /* Shiny Sands background: dark glitter dunes */
   --app-gradient: radial-gradient(90% 45% at 25% 12%, rgba(104, 88, 160, 0.5) 0%, transparent 50%),
     radial-gradient(100% 55% at 78% 42%, rgba(56, 48, 100, 0.55) 0%, transparent 55%),
+    radial-gradient(140% 32% at 30% 48%, rgba(198, 164, 106, 0.28) 0%, transparent 65%),
+    radial-gradient(150% 28% at 80% 82%, rgba(198, 164, 106, 0.22) 0%, transparent 60%),
     radial-gradient(120% 55% at 50% 105%, rgba(6, 6, 14, 0.95) 0%, transparent 65%),
-    linear-gradient(165deg, #211c3a 0%, #120f22 50%, #060510 100%);
+    linear-gradient(165deg, #241f38 0%, #14101f 50%, #060510 100%);
 }
 
 * {
@@ -87,6 +89,18 @@ body {
   50% {
     opacity: 1;
   }
+}
+
+.app::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.5;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  background-size: 160px 160px;
 }
 
 .app__content {
