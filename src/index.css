@@ -1,5 +1,5 @@
 :root {
-  --color-bg: #000000;
+  --color-bg: #3a2a17;
   --color-surface: #1c1c1e;
   --color-surface-alpha: rgba(28, 28, 30, 0.78);
   --color-text: #ffffff;
@@ -14,10 +14,10 @@
   --wc-sand: #c6a46a;
   --wc-teal: #00a79d;
 
-  --app-gradient: radial-gradient(90% 45% at 8% 0%, rgba(0, 94, 184, 0.35) 0%, transparent 60%),
-    radial-gradient(90% 45% at 100% 10%, rgba(240, 160, 0, 0.28) 0%, transparent 55%),
-    radial-gradient(90% 50% at 50% 100%, rgba(0, 167, 157, 0.28) 0%, transparent 60%),
-    radial-gradient(120% 55% at 50% 0%, #1c1c1e 0%, #000000 60%);
+  /* Shiny Sands background */
+  --app-gradient: radial-gradient(130% 60% at 85% -10%, #f6e2ab 0%, transparent 55%),
+    radial-gradient(110% 55% at 0% 115%, #6b4a26 0%, transparent 60%),
+    linear-gradient(160deg, #e0bd88 0%, #b98b4e 45%, #7a5330 100%);
 }
 
 * {
@@ -39,15 +39,52 @@ body {
 }
 
 .app {
+  position: relative;
   display: flex;
   flex-direction: column;
   height: 100dvh;
   max-width: 480px;
   margin: 0 auto;
   background: var(--app-gradient);
+  overflow: hidden;
+}
+
+.app::before {
+  content: '';
+  position: absolute;
+  top: -60%;
+  left: -60%;
+  width: 55%;
+  height: 220%;
+  background: linear-gradient(
+    75deg,
+    transparent 0%,
+    rgba(255, 250, 230, 0.16) 45%,
+    rgba(255, 250, 230, 0.4) 50%,
+    rgba(255, 250, 230, 0.16) 55%,
+    transparent 100%
+  );
+  transform: rotate(6deg);
+  animation: sand-shine 7s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes sand-shine {
+  0% {
+    left: -60%;
+  }
+  35% {
+    left: 130%;
+  }
+  100% {
+    left: 130%;
+  }
 }
 
 .app__content {
+  position: relative;
+  z-index: 1;
   flex: 1;
   min-height: 0;
   overflow-y: auto;
@@ -295,6 +332,8 @@ body {
 }
 
 .bottom-nav {
+  position: relative;
+  z-index: 1;
   display: flex;
   gap: 10px;
   border-top: 1px solid var(--color-border);
