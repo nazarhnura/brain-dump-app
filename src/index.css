@@ -14,13 +14,6 @@
   --wc-sand: #c6a46a;
   --wc-teal: #00a79d;
 
-  /* Shiny Sands background: dark glitter dunes */
-  --app-gradient: radial-gradient(90% 45% at 25% 12%, rgba(104, 88, 160, 0.5) 0%, transparent 50%),
-    radial-gradient(100% 55% at 78% 42%, rgba(56, 48, 100, 0.55) 0%, transparent 55%),
-    radial-gradient(140% 32% at 30% 48%, rgba(198, 164, 106, 0.28) 0%, transparent 65%),
-    radial-gradient(150% 28% at 80% 82%, rgba(198, 164, 106, 0.22) 0%, transparent 60%),
-    radial-gradient(120% 55% at 50% 105%, rgba(6, 6, 14, 0.95) 0%, transparent 65%),
-    linear-gradient(165deg, #241f38 0%, #14101f 50%, #060510 100%);
 }
 
 * {
@@ -48,59 +41,11 @@ body {
   height: 100dvh;
   max-width: 480px;
   margin: 0 auto;
-  background: var(--app-gradient);
+  background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.25)), url('/shiny-sands.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   overflow: hidden;
-}
-
-.app::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-  background-image:
-    /* soft blurred bokeh circles */
-    radial-gradient(circle at 15% 20%, rgba(157, 180, 255, 0.3) 0%, transparent 55%),
-    radial-gradient(circle at 82% 12%, rgba(183, 157, 255, 0.28) 0%, transparent 50%),
-    radial-gradient(circle at 68% 70%, rgba(244, 223, 168, 0.22) 0%, transparent 55%),
-    radial-gradient(circle at 8% 78%, rgba(157, 180, 255, 0.22) 0%, transparent 50%),
-    radial-gradient(circle at 92% 88%, rgba(183, 157, 255, 0.2) 0%, transparent 50%),
-    /* crisp sparkle points */
-    radial-gradient(circle at 12% 22%, #fff 0px, #fff 1px, transparent 3px),
-    radial-gradient(circle at 30% 62%, #f4dfa8 0px, #f4dfa8 1px, transparent 3px),
-    radial-gradient(circle at 46% 30%, #fff 0px, #fff 1px, transparent 2.5px),
-    radial-gradient(circle at 58% 80%, #9db4ff 0px, #9db4ff 1.5px, transparent 4px),
-    radial-gradient(circle at 70% 18%, #fff 0px, #fff 1px, transparent 3px),
-    radial-gradient(circle at 78% 55%, #b79dff 0px, #b79dff 1.5px, transparent 4px),
-    radial-gradient(circle at 88% 32%, #f4dfa8 0px, #f4dfa8 1px, transparent 3px),
-    radial-gradient(circle at 20% 88%, #fff 0px, #fff 1.5px, transparent 4px),
-    radial-gradient(circle at 40% 12%, #9db4ff 0px, #9db4ff 1px, transparent 3px),
-    radial-gradient(circle at 64% 44%, #fff 0px, #fff 1px, transparent 2.5px),
-    radial-gradient(circle at 90% 68%, #fff 0px, #fff 1.5px, transparent 4px),
-    radial-gradient(circle at 5% 45%, #f4dfa8 0px, #f4dfa8 1px, transparent 3px);
-  animation: sparkle-twinkle 4.5s ease-in-out infinite;
-}
-
-@keyframes sparkle-twinkle {
-  0%,
-  100% {
-    opacity: 0.75;
-  }
-  50% {
-    opacity: 1;
-  }
-}
-
-.app::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  opacity: 0.5;
-  mix-blend-mode: overlay;
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
-  background-size: 160px 160px;
 }
 
 .app__content {
