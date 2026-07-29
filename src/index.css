@@ -1,5 +1,5 @@
 :root {
-  --color-bg: #3a2a17;
+  --color-bg: #08070f;
   --color-surface: #1c1c1e;
   --color-surface-alpha: rgba(28, 28, 30, 0.78);
   --color-text: #ffffff;
@@ -14,10 +14,11 @@
   --wc-sand: #c6a46a;
   --wc-teal: #00a79d;
 
-  /* Shiny Sands background */
-  --app-gradient: radial-gradient(130% 60% at 85% -10%, #f6e2ab 0%, transparent 55%),
-    radial-gradient(110% 55% at 0% 115%, #6b4a26 0%, transparent 60%),
-    linear-gradient(160deg, #e0bd88 0%, #b98b4e 45%, #7a5330 100%);
+  /* Shiny Sands background: dark glitter dunes */
+  --app-gradient: radial-gradient(90% 45% at 25% 12%, rgba(104, 88, 160, 0.5) 0%, transparent 50%),
+    radial-gradient(100% 55% at 78% 42%, rgba(56, 48, 100, 0.55) 0%, transparent 55%),
+    radial-gradient(120% 55% at 50% 105%, rgba(6, 6, 14, 0.95) 0%, transparent 65%),
+    linear-gradient(165deg, #211c3a 0%, #120f22 50%, #060510 100%);
 }
 
 * {
@@ -52,33 +53,39 @@ body {
 .app::before {
   content: '';
   position: absolute;
-  top: -60%;
-  left: -60%;
-  width: 55%;
-  height: 220%;
-  background: linear-gradient(
-    75deg,
-    transparent 0%,
-    rgba(255, 250, 230, 0.16) 45%,
-    rgba(255, 250, 230, 0.4) 50%,
-    rgba(255, 250, 230, 0.16) 55%,
-    transparent 100%
-  );
-  transform: rotate(6deg);
-  animation: sand-shine 7s ease-in-out infinite;
+  inset: 0;
   pointer-events: none;
   z-index: 0;
+  background-image:
+    /* soft blurred bokeh circles */
+    radial-gradient(circle at 15% 20%, rgba(157, 180, 255, 0.3) 0%, transparent 55%),
+    radial-gradient(circle at 82% 12%, rgba(183, 157, 255, 0.28) 0%, transparent 50%),
+    radial-gradient(circle at 68% 70%, rgba(244, 223, 168, 0.22) 0%, transparent 55%),
+    radial-gradient(circle at 8% 78%, rgba(157, 180, 255, 0.22) 0%, transparent 50%),
+    radial-gradient(circle at 92% 88%, rgba(183, 157, 255, 0.2) 0%, transparent 50%),
+    /* crisp sparkle points */
+    radial-gradient(circle at 12% 22%, #fff 0px, #fff 1px, transparent 3px),
+    radial-gradient(circle at 30% 62%, #f4dfa8 0px, #f4dfa8 1px, transparent 3px),
+    radial-gradient(circle at 46% 30%, #fff 0px, #fff 1px, transparent 2.5px),
+    radial-gradient(circle at 58% 80%, #9db4ff 0px, #9db4ff 1.5px, transparent 4px),
+    radial-gradient(circle at 70% 18%, #fff 0px, #fff 1px, transparent 3px),
+    radial-gradient(circle at 78% 55%, #b79dff 0px, #b79dff 1.5px, transparent 4px),
+    radial-gradient(circle at 88% 32%, #f4dfa8 0px, #f4dfa8 1px, transparent 3px),
+    radial-gradient(circle at 20% 88%, #fff 0px, #fff 1.5px, transparent 4px),
+    radial-gradient(circle at 40% 12%, #9db4ff 0px, #9db4ff 1px, transparent 3px),
+    radial-gradient(circle at 64% 44%, #fff 0px, #fff 1px, transparent 2.5px),
+    radial-gradient(circle at 90% 68%, #fff 0px, #fff 1.5px, transparent 4px),
+    radial-gradient(circle at 5% 45%, #f4dfa8 0px, #f4dfa8 1px, transparent 3px);
+  animation: sparkle-twinkle 4.5s ease-in-out infinite;
 }
 
-@keyframes sand-shine {
-  0% {
-    left: -60%;
-  }
-  35% {
-    left: 130%;
-  }
+@keyframes sparkle-twinkle {
+  0%,
   100% {
-    left: 130%;
+    opacity: 0.75;
+  }
+  50% {
+    opacity: 1;
   }
 }
 
